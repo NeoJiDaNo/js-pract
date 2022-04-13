@@ -87,28 +87,26 @@
                             <button id="save">Сохранить</button>
                         </div>
                     </div>
-                    <div class="main__item">
-                        <div class="main__button-delete">
-                            <button id="delete">Удалить</button>
-                            <select id="selectDelete">
-                                <option selected disabled>Выбери что нужно удалить</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
-                <div class="main__items-table">
-                    <table class="main-table1">
-                        <tr><th>№</th><th>Имя</th><th>Фамилия</th><th>Есть 18 лет?</th><th>Способ выплаты</th></tr>
-                        <tr style="display: none;"><td>1</td><td>Даниил</td><td>Панцырев</td><td>да</td><td>Банковская карта</td></tr>
-                    </table>
-                    <table class="main-table2">
-                        <tr style="display: none;" id="tphone"><th>Телефон</th></tr>
-                        <tr style="display: none;"><td>123</td></tr>
-                        <tr style="display: none;" id="tcard"><th>Банк реквизиты</th><th>Дата</th><th>CVC</th></tr>
-                        <tr style="display: none;"><td>1234 1234 1234 1234</td><td>01/11</td><td>333</td></tr>
-                        <tr style="display: none;" id="tcripto"><th>Номер кошелька</th><th>Уникальный код</th><th>Пароль</th></tr></tr>
-                        <tr style="display: none;"><td>123</td><td>D87CQ</td><td>qwe123</td></tr>
-                    </table>
+                <div class="main__items-tables">
+                    <div class="main__item-table">
+                        <table class="main-table1">
+                            <tr><th>№</th><th>Имя</th><th>Фамилия</th><th>Есть 18 лет?</th><th>Способ выплаты</th><th id="tphone">Телефон</th></tr>
+                            <tr style="display: none;"><td>1</td><td>Даниил</td><td>Панцырев</td><td>да</td><td>Банковская карта</td><td>123</td></tr>
+                        </table>
+                    </div>
+                    <div class="main__item-table">
+                        <table class="main-table2">
+                            <tr id="tcard"><th>№</th><th>Имя</th><th>Фамилия</th><th>Есть 18 лет?</th><th>Способ выплаты</th><th>Банк реквизиты</th><th>Дата</th><th>CVC</th></tr>
+                            <tr style="display: none;"><td>Даниил</td><td>Панцырев</td><td>да</td><td>Банковская карта</td><td>1234 1234 1234 1234</td><td>01/11</td><td>333</td></tr>
+                        </table>
+                    </div>
+                    <div class="main__item-table">
+                        <table class="main-table3">
+                            <tr id="tcripto"><th>№</th><th>Имя</th><th>Фамилия</th><th>Есть 18 лет?</th><th>Способ выплаты</th><th>Номер кошелька</th><th>Уникальный код</th></tr></tr>
+                            <tr style="display: none;"><td>Даниил</td><td>Панцырев</td><td>да</td><td>Крипто кошелёк</td><td>123</td><td>D87CQ</td></tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

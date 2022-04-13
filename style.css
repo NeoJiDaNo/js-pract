@@ -90,9 +90,12 @@ main {
     display: flex;
 }
 
-.main__items-table {
+.main__items-tables {
     margin: 0 auto;
-    display: flex;
+}
+
+.main__item-table {
+    margin-bottom: 10px;
 }
 
 .main__items-info {
@@ -101,7 +104,7 @@ main {
 
 .main-table1 {
     text-align: left;
-    width: 420px;
+    width: 550px;
     border-spacing: 10px;
     border: 1px solid red;
     margin-right: 10px;
@@ -111,7 +114,16 @@ main {
 
 .main-table2 {
     text-align: left;
-    width: 275px;
+    width: 700px;
+    border-spacing: 10px;
+    border: 1px solid red;
+    text-align: center;
+    height: 100px;
+}
+
+.main-table3 {
+    text-align: left;
+    width: 750px;
     border-spacing: 10px;
     border: 1px solid red;
     text-align: center;

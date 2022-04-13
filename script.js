@@ -8,6 +8,9 @@ const selectPay = document.querySelector('#pay')
 const divPhone = document.querySelector('#divPhone')
 const divCard = document.querySelector('#divCard')
 const divCripto = document.querySelector('#divCripto')
+const table = document.querySelectorAll('table')[0]
+const table2 = document.querySelectorAll('table')[1]
+const table3 = document.querySelectorAll('table')[2]
 
 const tPhone = document.querySelector('#tphone')
 const tCard = document.querySelector('#tcard')
@@ -19,27 +22,12 @@ const iData = document.querySelector('#data')
 const iCVC = document.querySelector('#cvc')
 const iCripto = document.querySelector('#cripto')
 const iUnique = document.querySelector('#unique')
-const iPassword = document.querySelector('#password')
 
 const btnSave = document.querySelector('#save')
-const btnDelete = document.querySelector('#delete')
-const selectDelete = document.querySelector('#selectDelete')
 
 const mainTable1 = document.querySelector('.main-table1')
 const mainTable2 = document.querySelector('.main-table2')
-
-const tdId = document.querySelectorAll('td')[0]
-const tdName = document.querySelectorAll('td')[1]
-const tdFamily = document.querySelectorAll('td')[2]
-const tdAge = document.querySelectorAll('td')[3]
-const tdPay = document.querySelectorAll('td')[4]
-const tdPhone = document.querySelectorAll('td')[5]
-const tdCard = document.querySelectorAll('td')[6]
-const tdData = document.querySelectorAll('td')[7]
-const tdCVC = document.querySelectorAll('td')[8]
-const tdCripto = document.querySelectorAll('td')[9]
-const tdUnique = document.querySelectorAll('td')[10]
-const tdPassword = document.querySelectorAll('td')[11]
+const mainTable3 = document.querySelector('.main-table3')
 
 let id = 0 
 let iName
@@ -53,86 +41,85 @@ let cvc
 let cripto 
 let unique 
 let password 
-let tr1
-let tr2
+let tr
 let arr = []
 let obj = new Object()
-let localID = 0
+let delID = 0
+let getArr
+let getObject
 
 selectPay.addEventListener('change', function() {
     if (1 == selectPay.value) {
         divPhone.style.display = 'flex'
         divCripto.style.display = 'none'
         divCard.style.display = 'none'
-        tPhone.style.display = ''
-        tCard.style.display = 'none'
-        tCripto.style.display = 'none'
     } else if (2 == selectPay.value) {
         divCard.style.display = 'flex'
         divCripto.style.display = 'none'
         divPhone.style.display = 'none'
-        tPhone.style.display = 'none'
-        tCard.style.display = ''
-        tCripto.style.display = 'none'
     } else if (3 == selectPay.value) {
         divCripto.style.display = 'flex'
         divCard.style.display = 'none'
         divPhone.style.display = 'none'
-        tPhone.style.display = 'none'
-        tCard.style.display = 'none'
-        tCripto.style.display = ''
     }
 })
 
 btnSave.addEventListener('click', function () {
+    render()
+})
+
+const render = function () {
+    age = checkAge.checked ? 'да' : 'нет'
+    tr = document.createElement('tr')
     if (1 == selectPay.value) {
-        id++
+        id = arr.length + 1
         iName = inputName.value
         family = inputFamily.value
-        phone = iPhone.value 
-        tr1 = document.createElement('tr')
-        tr2 = document.createElement('tr')
-        tr1.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>да</td><td>Банковская карта</td>`
-        tr2.innerHTML = `<td>${phone}</td>`
-        mainTable1.append(tr1)
-        mainTable2.append(tr2)
+        phone = iPhone.value
+        delID = arr.length + 1
+        tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Телефон</td><td>${phone}</td><td><button id="${delID}">Удалить</button></td>`
+        mainTable1.append(tr)
         getObj()
     } else if (2 == selectPay.value) {
-        id++
+        id = arr.length + 1
         iName = inputName.value
         family = inputFamily.value
         card = iCard.value 
         data = iData.value
         cvc = iCVC.value
-        tr1 = document.createElement('tr')
-        tr2 = document.createElement('tr')
-        tr1.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>да</td><td>Банковская карта</td>`
-        tr2.innerHTML = `<td>${card}</td><td>${data}</td><td>${cvc}</td>`
-        mainTable1.append(tr1)
-        mainTable2.append(tr2)
+        delID = arr.length + 1
+        tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Банковская карта</td><td>${card}</td><td>${data}</td><td>${cvc}</td><td><button id="${delID}">Удалить</button></td>`
+        mainTable2.append(tr)
         getObj()
     } else if (3 == selectPay.value) {
-        id++
+        id = arr.length + 1
         iName = inputName.value
         family = inputFamily.value
         cripto = iCripto.value 
         unique = iUnique.value
-        password = iPassword.value
-        tr1 = document.createElement('tr')
-        tr2 = document.createElement('tr')
-        tr1.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>да</td><td>Банковская карта</td>`
-        tr2.innerHTML = `<td>${cripto}</td><td>${unique}</td><td>${password}</td>`
-        mainTable1.append(tr1)
-        mainTable2.append(tr2)
+        delID = arr.length + 1
+        tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Крипто кошелёк</td><td>${cripto}</td><td>${unique}</td><td><button id="${delID}">Удалить</button></td>`
+        mainTable3.append(tr)
         getObj()
     }
-})
+    
+    tr.addEventListener('click', function () {
+        
+    })
+}
+
+const initRemoveTable1 = function () {
+    let gg = table.querySelectorAll('button')
+    
+    console.log(gg)
+}
 
 const getObj = function () {
     if (1 == selectPay.value) {
         obj['id'] = id
         obj['name'] = iName
         obj['family'] = family
+        obj['age'] = age
         obj['phone'] = phone
         console.log(obj);
         getArray()
@@ -140,6 +127,7 @@ const getObj = function () {
         obj['id'] = id
         obj['name'] = iName
         obj['family'] = family
+        obj['age'] = age
         obj['card'] = card
         obj['data'] = data
         obj['cvc'] = cvc
@@ -149,9 +137,9 @@ const getObj = function () {
         obj['id'] = id
         obj['name'] = iName
         obj['family'] = family
+        obj['age'] = age
         obj['cripto'] = cripto
         obj['unique'] = unique
-        obj['password'] = password
         console.log(obj);
         getArray()
     }
@@ -159,12 +147,54 @@ const getObj = function () {
 
 const getArray = function () {
     arr.push(obj)
-    console.log(arr);
+    console.log(arr)
     obj = {}
     localStorage.setItem(1, JSON.stringify(arr))
 }
 
-const test = function() {
-    console.log(tr1);
-    console.log(tr2);
+
+
+const infoLocal = function() {
+    arr = JSON.parse(localStorage.getItem(1)) == null ? [] : JSON.parse(localStorage.getItem(1))
+    console.log(arr);
+    for(let key in arr) {
+        getObject = arr[key]
+        console.log(getObject);
+        if (getObject.phone) {
+            id = getObject.id
+            iName = getObject.name
+            family = getObject.family
+            age = getObject.age
+            phone = getObject.phone
+            delID++
+            tr = document.createElement('tr')
+            tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Телефон</td><td>${phone}</td><td><button id="${delID}">Удалить</button></td>`
+            mainTable1.append(tr)
+        } else if (getObject.card) {
+            id = getObject.id
+            iName = getObject.name
+            family = getObject.family
+            age = getObject.age
+            card = getObject.card
+            data = getObject.data
+            cvc = getObject.cvc
+            delID++
+            tr = document.createElement('tr')
+            tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Банковская карта</td><td>${card}</td><td>${data}</td><td>${cvc}</td><td><button id="${delID}">Удалить</button></td>`
+            mainTable2.append(tr)
+        } else if (getObject.unique) {
+            id = getObject.id
+            iName = getObject.name
+            family = getObject.family
+            age = getObject.age
+            cripto = getObject.cripto
+            unique = getObject.unique
+            delID++
+            tr = document.createElement('tr')
+            tr.innerHTML = `<td>${id}</td><td>${iName}</td><td>${family}</td><td>${age}</td><td>Крипто кошелёк</td><td>${cripto}</td><td>${unique}</td><td><button id="${delID}">Удалить</button></td>`
+            mainTable3.append(tr)
+        }
+    }
 }
+infoLocal()
+initRemoveTable1()
