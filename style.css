@@ -104,7 +104,7 @@ main {
 
 .main-table1 {
     text-align: left;
-    width: 550px;
+    width: 600px;
     border-spacing: 10px;
     border: 1px solid red;
     margin-right: 10px;
@@ -114,7 +114,7 @@ main {
 
 .main-table2 {
     text-align: left;
-    width: 700px;
+    width: 750px;
     border-spacing: 10px;
     border: 1px solid red;
     text-align: center;
